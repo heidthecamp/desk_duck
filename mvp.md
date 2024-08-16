@@ -11,3 +11,4 @@
 ## Stretch goals
 
 - [] vscode extension to get greater context
+- [] reminder to take breaks at long intervals
