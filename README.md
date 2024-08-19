@@ -21,7 +21,7 @@ pip install langchain or conda install langchain -c conda-forge
 pip install openai langchain-openai
 pip install pypdf
 pip install opencv-python
-pip install 
+pip install mediapipe
 API Key - https://platform.openai.com/docs/overview
 ChatGPT account
 
