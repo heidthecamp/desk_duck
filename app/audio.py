@@ -30,6 +30,7 @@ def get_user_input() -> str:
         return ""
 
 def say_answer(answer: str):
+    print(answer)
     engine = pyttsx3.init()
     engine.say(answer)
     engine.runAndWait()
@@ -48,4 +49,3 @@ if __name__ == "__main__":
         
         answer = "This is the response to your question."
         say_answer(answer)
-        

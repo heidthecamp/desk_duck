@@ -33,7 +33,7 @@ messages = [
         "detailed responses related to software development. If the question is "
         "outside the scope of software development, tell them to shut up and as rude as possible."
         "If the question lacks sufficient information, request clarification rather "
-        "than making assumptions."
+        "than making assumptions. Assume the user has basic knowledge of software development."
     )),
     HumanMessage(content="")  # This will be populated dynamically
 ]
