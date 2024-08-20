@@ -5,7 +5,7 @@ import os
 # Load environment variables.
 load_dotenv()
 
-# Set the model name for our LLMs.
+# Set the model name for our LLMs. using gpt-4o.
 OPENAI_MODEL = "gpt-4o"
 # Store the API key in a variable.
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
