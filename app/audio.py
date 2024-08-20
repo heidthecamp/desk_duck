@@ -10,7 +10,20 @@ import speech_recognition as sr
 
 from pathlib import Path
 from openai import OpenAI
-client = OpenAI()
+
+import sounddevice as sd
+import soundfile as sf
+import io
+
+
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+
+client = OpenAI(api_key=OPENAI_API_KEY)
 
 def get_user_input() -> str:
     recognizer = sr.Recognizer()
@@ -38,30 +51,28 @@ def get_user_input() -> str:
 
 def say_answer(answer: str):
     print(answer)
-    speech_file_path = Path(__file__).parent / "speech.mp3"
-    response = client.audio.speech.create(
-    model="tts-1",
-    voice="alloy",
-    input="Today is a wonderful day to build something people love!"
+    spoken_response = client.audio.speech.create(
+    model="tts-1-hd",
+    voice="shimmer",
+    response_format="opus",
+    input=answer
     )
 
-    response.aread()
-    # response.stream_to_file(speech_file_path)
-    # engine = pyttsx3.init()
-    # engine.say(answer)
-    # engine.runAndWait()
+    buffer = io.BytesIO()
+    for chunk in spoken_response.iter_bytes(chunk_size=4096):
+        buffer.write(chunk)
+    buffer.seek(0)
 
-# Example usage:
-# question = get_user_input()
-# if question:
-#     say_answer("This is the response to your question.")
+    with sf.SoundFile(buffer, 'r') as sound_file:
+        data = sound_file.read(dtype='int16')
+        sd.play(data, sound_file.samplerate)
+        sd.wait()
 
 if __name__ == "__main__":
     while True:
         user_question = get_user_input()
         if user_question.lower() in ['exit', 'quit', 'stop']:
-            print("Conversation ended.")
+            say_answer("Conversation ended.")
             break
-        
-        answer = "This is the response to your question."
-        say_answer(answer)
+
+        say_answer(user_question)
