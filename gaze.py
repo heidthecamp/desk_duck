@@ -107,10 +107,10 @@ def gaze(frame, points):
         # Draw gaze line into screen
         lp1 = (int(left_pupil[0]), int(left_pupil[1]))
         lp2 = (int(l_gaze[0]), int(l_gaze[1]))
-        cv2.line(frame, lp1, lp2, (0, 0, 255), 2)
+        # cv2.line(frame, lp1, lp2, (0, 0, 255), 2)
         rp1 = (int(right_pupil[0]), int(right_pupil[1]))
         rp2 = (int(r_gaze[0]), int(r_gaze[1]))
-        cv2.line(frame, rp1, rp2, (0, 255, 0), 2)
+        # cv2.line(frame, rp1, rp2, (0, 255, 0), 2)
         return get_gaze_distance(lp1, lp2, rp1, rp2)
 
 def gaze_distance(position1, position2):
@@ -130,4 +130,4 @@ def get_gaze_distance(lp1, lp2, rp1, rp2):
     """
     The function calculates the distance between two points in 2D space.
     """
-    return np.sqrt((lp1[0] - lp2[0]) ** 2 + (lp1[1] - lp2[1]) ** 2), np.sqrt((rp1[0] - rp2[0]) ** 2 + (rp1[1] - rp2[1]) ** 2)
+    return np.sqrt(((lp1[0] - lp2[0]) ** 2 + (lp1[1] - lp2[1]) ** 2) + np.sqrt((rp1[0] - rp2[0]) ** 2 + (rp1[1] - rp2[1]) ** 2)/2)

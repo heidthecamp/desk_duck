@@ -38,3 +38,14 @@ def say_answer(answer: str):
 # question = get_user_input()
 # if question:
 #     say_answer("This is the response to your question.")
+
+if __name__ == "__main__":
+    while True:
+        user_question = get_user_input()
+        if user_question.lower() in ['exit', 'quit', 'stop']:
+            print("Conversation ended.")
+            break
+        
+        answer = "This is the response to your question."
+        say_answer(answer)
+        

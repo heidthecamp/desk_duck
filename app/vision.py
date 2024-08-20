@@ -6,14 +6,11 @@ import gaze
 import cv2
 import mediapipe as mp
 
+mp_face_mesh = mp.solutions.face_mesh  # initialize the face mesh model
+
 def hasMadeEyeContact() -> bool:
-
-    # Things Tim has looked at how to do:
-
-    mp_face_mesh = mp.solutions.face_mesh  # initialize the face mesh model
-
     # camera stream:
-    cap = cv2.VideoCapture(1)  # chose camera index (try 1, 2, 3)
+    cap = cv2.VideoCapture(0)  # chose camera index (try 1, 2, 3)
 
     with mp_face_mesh.FaceMesh(
             max_num_faces=1,  # number of faces to track in each frame
@@ -35,12 +32,23 @@ def hasMadeEyeContact() -> bool:
 
             if results.multi_face_landmarks:
                 distance = gaze.gaze(image, results.multi_face_landmarks[0])  # gaze estimation
-                rolling_list = rolling_list[-10:] + [distance]   
-                if rolling_list.avg() < 10:
+                if distance is not None:
+                    rolling_list = rolling_list[-10:] + [distance]
+                if len(rolling_list) >= 10:
+                    if sum(rolling_list) / 10 < 15:  # if the average distance is less than 0.5
                         cap.release()
                         return True
-            
-            if cv2.waitKey(2) & 0xFF == 27:
-                break
-    cap.release()
-    return False
+
+            # cv2.imshow('output window', image)
+            # if cv2.waitKey(2) & 0xFF == 27:
+            #     cap.release()
+            #     return False
+
+
+if __name__ == "__main__":
+    
+    while hasMadeEyeContact():
+        print("User has made eye contact.")
+    
+    print('User has exit the program')
+    
