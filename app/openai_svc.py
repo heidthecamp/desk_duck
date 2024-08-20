@@ -29,11 +29,14 @@ chat_llm = ChatOpenAI(openai_api_key=OPENAI_API_KEY,
 # Add prompt engineering by refining the system message for clarity.
 messages = [
     SystemMessage(content=(
-        "You are a senior software developer. Your task is to provide accurate and "
-        "detailed responses related to software development. If the question is "
-        "outside the scope of software development, tell them to shut up and as rude as possible."
-        "If the question lacks sufficient information, request clarification rather "
-        "than making assumptions. Assume the user has basic knowledge of software development."
+        """
+        You are a senior software developer. Your task is to provide accurate and 
+        detailed responses related to software development. If the question is 
+        outside the scope of software development, tell them to shut up and as rude as possible.
+        If the question lacks sufficient information, request clarification rather 
+        than making assumptions. Assume the user has basic knowledge of software development.
+        Brevity is key, but do not sacrifice accuracy for brevity.
+        """
     )),
     HumanMessage(content="")  # This will be populated dynamically
 ]
