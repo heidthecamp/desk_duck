@@ -1,12 +1,6 @@
-
-# def get_user_input() -> str:
-#     return input("Please enter your question: ")
-
-# def say_answer(answer: str):
-#     print(answer)
-
 import speech_recognition as sr
-import pyttsx3
+from gtts import gTTS
+import os
 
 def get_user_input() -> str:
     recognizer = sr.Recognizer()
@@ -31,15 +25,23 @@ def get_user_input() -> str:
 
 def say_answer(answer: str):
     print(answer)
-    engine = pyttsx3.init()
-    engine.say(answer)
-    engine.runAndWait()
+    engine = gTTS(text=answer, lang='en', slow=False)
+
+    #save the speech to a file
+    engine.save("answer.mp3")
+
+    
+    # Play the saved audio file
+    # Platform-specific command to play audio
+    if os.name == 'nt':  # Windows
+        os.system("start answer.mp3")
+    elif os.name == 'posix':  # macOS or Linux
+        if 'darwin' in os.uname().sysname.lower():  # macOS
+            os.system("afplay answer.mp3")
+        else:  # Linux
+            os.system("mpg321 answer.mp3")  # or use `mplayer` instead
 
 # Example usage:
-# question = get_user_input()
-# if question:
-#     say_answer("This is the response to your question.")
-
 if __name__ == "__main__":
     while True:
         user_question = get_user_input()
@@ -47,5 +49,4 @@ if __name__ == "__main__":
             print("Conversation ended.")
             break
         
-        answer = "This is the response to your question."
-        say_answer(answer)
+        say_answer(user_question)
