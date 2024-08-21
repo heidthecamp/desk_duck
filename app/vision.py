@@ -39,10 +39,10 @@ def hasMadeEyeContact() -> bool:
                         cap.release()
                         return True
 
-            # cv2.imshow('output window', image)
-            # if cv2.waitKey(2) & 0xFF == 27:
-            #     cap.release()
-            #     return False
+            cv2.imshow('output window', image)
+            if cv2.waitKey(2) & 0xFF == 27:
+                cap.release()
+                return False
 
 
 if __name__ == "__main__":
