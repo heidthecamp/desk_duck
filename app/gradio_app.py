@@ -14,7 +14,7 @@ def app():
 
     # demo.launch()
 
-    gr.Interface(fn=activate_contact, inputs=[gr.Button()], outputs=[gr.Text()]).launch()
+    gr.Interface(fn=activate_contact, inputs=[gr.Button()], outputs=None).launch(share=True)
     
 
 if __name__ == '__main__':
