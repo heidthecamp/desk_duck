@@ -1,7 +1,7 @@
 import gradio as gr
 from main import main
 
-def activate_contact():
+def activate_contact(_):
     main()
 
 
@@ -14,7 +14,7 @@ def app():
 
     # demo.launch()
 
-    gr.Interface(fn=activate_contact, inputs=None, outputs=None).launch()
+    gr.Interface(fn=activate_contact, inputs=[gr.Button()], outputs=[gr.Text()]).launch()
     
 
 if __name__ == '__main__':
