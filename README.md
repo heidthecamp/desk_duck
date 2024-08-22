@@ -1,4 +1,6 @@
 # Desk_Duck
+<img width="581" alt="Screenshot 2024-08-22 at 7 03 17 PM" src="https://github.com/user-attachments/assets/58215b06-403e-4dd9-aa21-2d56e7787d67">
+
 An ai chatbot to serve as a "rubber duck" for when you're stuck on a project.
 
 Introduction:
