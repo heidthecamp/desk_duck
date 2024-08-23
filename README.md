@@ -7,8 +7,8 @@ Desk Duck aims to be a an AI Assistant to help with programming. You can ask it 
 
 ## Instructions:
 Clone or Download the repo
-Install dependencies using req.txt and mac_req.txt
-Run Main.py 
+Install dependencies using req.txt or mac_req.txt
+Run `/app/python main.py` 
 Look at your camera and ask a question
 Say stop or shutup to stop the app from listening and answering (future iteration)
 
