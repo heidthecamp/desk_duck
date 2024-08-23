@@ -1,7 +1,3 @@
-# add root to path
-import sys
-sys.path.append('..')
-
 import gaze
 import cv2
 import mediapipe as mp
