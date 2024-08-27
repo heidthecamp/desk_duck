@@ -1,7 +1,3 @@
-# add root to path
-import sys
-sys.path.append('..')
-
 import gaze
 import cv2
 import mediapipe as mp
@@ -39,10 +35,10 @@ def hasMadeEyeContact() -> bool:
                         cap.release()
                         return True
 
-            # cv2.imshow('output window', image)
-            # if cv2.waitKey(2) & 0xFF == 27:
-            #     cap.release()
-            #     return False
+            cv2.imshow('output window', image)
+            if cv2.waitKey(2) & 0xFF == 27:
+                cap.release()
+                return False
 
 
 if __name__ == "__main__":
