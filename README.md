@@ -62,6 +62,9 @@ pip3 install pyaudio
 - Matilda Wang
 - Shephali Dubey
 
+## Presentation
+https://youtu.be/jttEAuCHjto?si=bXJqBI2XHtUkdck6
+
 ## Sources:
 https://github.com/amitt1236/Gaze_estimation/blob/master/gaze.py
 https://www.geeksforgeeks.org/python-convert-speech-to-text-and-text-to-speech/
