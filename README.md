@@ -63,7 +63,7 @@ pip3 install pyaudio
 - Shephali Dubey
 
 ## Sources:
-https://github.com/amitt1236/Gaze_estimation/blob/master/gaze.py
-https://www.geeksforgeeks.org/python-convert-speech-to-text-and-text-to-speech/
-ChatGPT
+- https://github.com/amitt1236/Gaze_estimation/blob/master/gaze.py
+- https://www.geeksforgeeks.org/python-convert-speech-to-text-and-text-to-speech/
+- ChatGPT
 
